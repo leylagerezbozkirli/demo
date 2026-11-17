@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leyla Gerez</title>
+  <meta name="description" content="Leyla Gerez — Matematik Öğretmeni. Kişisel tanıtım sayfası.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f4;
+      --surface: #ffffff;
+      --text: #1d1b19;
+      --muted: #5f5a54;
+      --line: #e7e2da;
+      --grid: rgba(60, 80, 140, 0.07);
+      --accent: #2f5bd3;
+      --accent-soft: #e8eefc;
+      --accent-text: #ffffff;
+      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #14161b;
+        --surface: #1c1f26;
+        --text: #eceae6;
+        --muted: #a5a29c;
+        --line: #2c3039;
+        --grid: rgba(140, 165, 230, 0.07);
+        --accent: #7c9cf5;
+        --accent-soft: #232b40;
+        --accent-text: #0f1320;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigasyon */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: "Fraunces", serif; font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 24px; }
+    nav ul a { text-decoration: none; color: var(--muted); font-size: .95rem; font-weight: 500; transition: color .2s; }
+    nav ul a:hover { color: var(--text); }
+
+    /* Karşılama */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 60px);
+      min-height: calc(100svh - 60px);
+      display: flex; align-items: center;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 28px 28px;
+      overflow: hidden;
+    }
+    .hero .wrap { position: relative; padding-top: 64px; padding-bottom: 64px; }
+    .eyebrow {
+      display: inline-block;
+      background: var(--accent-soft); color: var(--accent);
+      font-weight: 600; font-size: .85rem; letter-spacing: .02em;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 24px;
+    }
+    h1 {
+      font-family: "Fraunces", serif; font-weight: 700;
+      font-size: clamp(2.6rem, 9vw, 5.5rem);
+      line-height: 1.05; letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { font-size: clamp(1.05rem, 2.5vw, 1.3rem); color: var(--muted); max-width: 560px; margin-bottom: 36px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .float-symbols { position: absolute; inset: 0; pointer-events: none; }
+    .float-symbols span {
+      position: absolute; font-family: "Fraunces", serif;
+      color: var(--accent); opacity: .12; user-select: none;
+    }
+
+    /* Butonlar */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 26px; border-radius: 12px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s;
+    }
+    .btn-primary { background: var(--accent); color: var(--accent-text); box-shadow: var(--shadow); }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-ghost { border: 1px solid var(--line); background: var(--surface); }
+    .btn-ghost:hover { border-color: var(--accent); }
+    .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* Bölümler */
+    section.block { padding: 96px 0; }
+    .section-label {
+      font-size: .8rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    h2 {
+      font-family: "Fraunces", serif; font-weight: 700;
+      font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.15;
+      letter-spacing: -0.01em; margin-bottom: 28px;
+    }
+
+    /* Hakkımda */
+    .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: start; }
+    .about-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 20px; padding: 32px; box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      margin: 0 auto 20px;
+      background: var(--accent-soft); color: var(--accent);
+      display: grid; place-items: center;
+      font-family: "Fraunces", serif; font-size: 2.6rem; font-weight: 700;
+    }
+    .about-card h3 { font-family: "Fraunces", serif; font-size: 1.35rem; margin-bottom: 4px; }
+    .about-card p { color: var(--muted); font-size: .95rem; }
+    .about-text p { font-size: 1.08rem; color: var(--muted); margin-bottom: 18px; }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+    .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .facts li {
+      list-style: none; font-size: .9rem; font-weight: 500;
+      padding: 8px 14px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--surface);
+    }
+
+    /* Hobiler */
+    .hobbies { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .card {
+      background: var(--bg); border: 1px solid var(--line);
+      border-radius: 20px; padding: 36px 32px;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
+    .card-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--accent-soft); color: var(--accent);
+      display: grid; place-items: center; margin-bottom: 22px;
+    }
+    .card-icon svg { width: 28px; height: 28px; }
+    .card h3 { font-family: "Fraunces", serif; font-size: 1.5rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); }
+
+    /* İletişim */
+    .contact { text-align: center; }
+    .contact h2 { margin-bottom: 16px; }
+    .contact .lead { margin: 0 auto 36px; }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0; text-align: center; color: var(--muted); font-size: .9rem; }
+
+    /* Animasyon */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* Mobil */
+    @media (max-width: 760px) {
+      .wrap { padding: 0 16px; }
+      nav ul { gap: 16px; }
+      nav ul li.hide-sm { display: none; }
+      section.block { padding: 64px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cards { grid-template-columns: 1fr; gap: 16px; }
+      .card { padding: 28px 24px; }
+      .hero-actions .btn { flex: 1 1 100%; justify-content: center; }
+      .float-symbols span:nth-child(n+4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="#" class="logo">Leyla<span>.</span></a>
+      <ul>
+        <li><a href="#hakkimda">Hakkımda</a></li>
+        <li><a href="#hobiler">Hobiler</a></li>
+        <li class="hide-sm"><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="float-symbols" aria-hidden="true">
+      <span style="top:14%; right:8%;  font-size:5rem;">π</span>
+      <span style="top:62%; right:16%; font-size:3.6rem;">∑</span>
+      <span style="top:78%; left:6%;   font-size:2.6rem;">√x</span>
+      <span style="top:22%; right:34%; font-size:2.4rem;">∞</span>
+      <span style="top:44%; right:4%;  font-size:2.2rem;">x²</span>
+      <span style="top:84%; right:42%; font-size:2rem;">∫</span>
+    </div>
+    <div class="wrap">
+      <span class="eyebrow">Matematik Öğretmeni</span>
+      <h1>Merhaba, ben<br><em>Leyla Gerez.</em></h1>
+      <p class="lead">Matematiği korkulan bir ders olmaktan çıkarıp merak edilen, keşfedilen ve sevilen bir yolculuğa dönüştürmeye çalışıyorum.</p>
+      <div class="hero-actions">
+        <a href="#iletisim" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          İletişime Geç
+        </a>
+        <a href="#hakkimda" class="btn btn-ghost">Beni Tanıyın</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hakkimda" class="block">
+      <div class="wrap about-grid">
+        <div class="about-card reveal">
+          <div class="avatar" aria-hidden="true">LG</div>
+          <h3>Leyla Gerez</h3>
+          <p>Matematik Öğretmeni</p>
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">Hakkımda</p>
+          <h2>Sayıların arkasındaki hikâyeyi anlatmayı seviyorum.</h2>
+          <p>Ben <strong>Leyla Gerez</strong>, bir <strong>matematik öğretmeniyim</strong>. Öğrencilerimin formülleri ezberlemesinden çok, mantığını kavramasını ve problem çözmenin keyfini yaşamasını önemsiyorum.</p>
+          <p>Derslerimde sabırlı, anlaşılır ve günlük hayatla bağ kuran bir yaklaşım benimsiyorum; çünkü her öğrencinin kendi hızında öğrenebileceğine inanıyorum.</p>
+          <ul class="facts">
+            <li>📐 Matematik Öğretmenliği</li>
+            <li>🎾 Tenis</li>
+            <li>✏️ Karakalem</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="hobiler" class="block hobbies">
+      <div class="wrap">
+        <p class="section-label reveal">Hobilerim</p>
+        <h2 class="reveal">Sınıfın dışında neler yapıyorum?</h2>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M5.2 4.7a10 10 0 0 1 0 14.6"/><path d="M18.8 4.7a10 10 0 0 0 0 14.6"/></svg>
+            </div>
+            <h3>Tenis Oynamak</h3>
+            <p>Kortta geçirdiğim zaman hem enerji depoladığım hem de odaklanmayı, stratejiyi ve sabrı çalıştığım anlar. Her maç biraz da açı ve hız hesabı!</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <h3>Karakalem Çizmek</h3>
+            <p>Bir kalem ve bir kâğıtla ışığı, gölgeyi ve oranları keşfetmek beni dinlendiriyor. Çizim, geometrinin en sanatsal hâli.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim" class="block contact">
+      <div class="wrap reveal">
+        <p class="section-label">İletişim</p>
+        <h2>Birlikte bir şeyler yapalım</h2>
+        <p class="lead">Özel ders, iş birliği ya da sadece merhaba demek için bana e-posta gönderebilirsiniz.</p>
+        <!-- E-posta adresinizi aşağıdaki mailto: kısmına yazın -->
+        <a href="mailto:ornek@eposta.com" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Bana E-posta Gönder
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="yil"></span> Leyla Gerez · Tüm hakları saklıdır.</div>
+  </footer>
+
+  <script>
+    document.getElementById('yil').textContent = new Date().getFullYear();
+
+    const items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      items.forEach((el) => io.observe(el));
+    } else {
+      items.forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
